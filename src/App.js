@@ -1,10 +1,11 @@
-import Counter from 'Components/Counter/Counter';
+// import Counter from 'Components/Counter/Counter';
 // import Form from 'Components/Form/Form';
-
+import Clock from 'Components/Clock/Clock';
 function App() {
   return (
     <div>
-      <Counter />
+      <Clock />
+      {/* <Counter /> */}
       {/* <Form /> */}
     </div>
   );
