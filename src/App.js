@@ -1,15 +1,15 @@
 // import Counter from 'Components/Counter/Counter';
-// import Form from 'Components/Form/Form';
+import Form from 'Components/Form/Form';
 // import Clock from 'Components/Clock/Clock';
-import UserMenu from 'Components/context/UserMenu';
+// import UserMenu from 'Components/context/UserMenu';
 
 function App() {
   return (
     <div>
-      <UserMenu />
+      {/* <UserMenu /> */}
       {/* <Clock /> */}
       {/* <Counter /> */}
-      {/* <Form /> */}
+      <Form />
     </div>
   );
 }

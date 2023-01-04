@@ -2,19 +2,23 @@ import { useContext } from 'react';
 import str from './AutoContext';
 
 export default function UserMenu() {
-  const auter = useContext(str);
-  console.log(auter);
+  const { user, logIn, logOut } = useContext(str);
+  // console.log(auterContext);
 
   return (
     <div>
-      <button type="button" onClick={() => console.log('Входим')}>
-        Войти
-      </button>
-
-      <p>User</p>
-      <button type="button" onClick={() => console.log('Выходим')}>
-        Exit
-      </button>
+      {user ? (
+        <>
+          <p>{user}</p>
+          <button type="button" onClick={logOut}>
+            Exit
+          </button>
+        </>
+      ) : (
+        <button type="button" onClick={logIn}>
+          Войти
+        </button>
+      )}
     </div>
   );
 }

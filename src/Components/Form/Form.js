@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const styles = {
   // form: {
@@ -9,33 +9,64 @@ const styles = {
   // marginBottom: 15,
 };
 
+const useLocalStorage = (key, defaultValue) => {
+  const [state, setState] = useState(() => {
+    return JSON.parse(window.localStorage.getItem(key)) ?? defaultValue;
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(state));
+  }, [key, state]);
+
+  return [state, setState];
+};
+
 export default function Form() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useLocalStorage('mail', '');
+  const [password, setPassword] = useLocalStorage('password', '');
 
-  const handelGangEmail = event => {
-    setEmail(event.target.value);
+  const handlChange = event => {
+    const { name, value } = event.target;
+
+    switch (name) {
+      case 'email':
+        setEmail(value);
+        break;
+
+      case 'password':
+        setPassword(value);
+        break;
+
+      default:
+        return;
+    }
   };
 
-  const handelGangPassword = event => {
-    setPassword(event.target.value);
-  };
+  // useEffect(() => {
+  //   console.log('fdf');
+  //   window.localStorage.setItem('email', JSON.stringify(email));
+  // }, [email]);
 
-  const handelSubmit = event => {
-    event.preventDefault();
+  // useEffect(() => {
+  //   console.log('fdf');
+  //   window.localStorage.setItem('password', JSON.stringify(password));
+  // }, [password]);
 
-    console.log(email, password);
-  };
+  // const handelSubmit = event => {
+  //   event.preventDefault();
+
+  //   console.log(email, password);
+  // };
 
   return (
-    <form style={styles.form} autoComplete="off" onSubmit={handelSubmit}>
+    <form style={styles.form} autoComplete="off">
       <label style={styles.label}>
         <span>почта</span>
         <br />
         <input
           type="email"
           name="email"
-          onChange={handelGangEmail}
+          onChange={handlChange}
           value={email}
           placeholder="pohta"
         />
@@ -47,7 +78,7 @@ export default function Form() {
         <input
           type="password"
           name="password"
-          onChange={handelGangPassword}
+          onChange={handlChange}
           value={password}
           placeholder="password"
         />

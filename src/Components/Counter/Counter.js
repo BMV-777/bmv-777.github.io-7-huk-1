@@ -14,8 +14,13 @@ export default function Counter() {
   };
 
   useEffect(() => {
-    console.log(counterA + ' Rita Привет!', +counterB + Date.now());
+    const totalClick = counterA + counterB;
+    document.title = `Hello${totalClick}`;
   }, [counterA, counterB]);
+
+  // useEffect(() => {
+  //   console.log(counterB + ' Rita Привет!' + Date.now());
+  // }, [counterB]);
 
   return (
     <>

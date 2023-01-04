@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import authContext from './AutoContext';
 
-export default class AuterProvaider extends Component {
+export default class AuthProvider extends Component {
   state = {
     user: null,
     logIn: () => {
@@ -15,7 +15,7 @@ export default class AuterProvaider extends Component {
   render() {
     return (
       <authContext.Provider value={this.state}>
-        {/* {this.props.children} */}
+        {this.prop.children}
       </authContext.Provider>
     );
   }
