@@ -1,15 +1,18 @@
 // import Counter from 'Components/Counter/Counter';
-import Form from 'Components/Form/Form';
+// import Form from 'Components/Form/Form';
 // import Clock from 'Components/Clock/Clock';
 // import UserMenu from 'Components/context/UserMenu';
+
+import { Modal } from 'Components/ButonSmodalkoi/Modalka';
 
 function App() {
   return (
     <div>
+      <Modal />
       {/* <UserMenu /> */}
       {/* <Clock /> */}
       {/* <Counter /> */}
-      <Form />
+      {/* <Form /> */}
     </div>
   );
 }
